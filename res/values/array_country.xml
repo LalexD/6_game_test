@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="name_country">
+        <item>Australia</item>
+        <item>United kingdom</item>
+        <item>Ghana</item>
+        <item>Danmark</item>
+        <item>Canada</item>
+        <item>Iceland</item>
+        <item>Austria</item>
+        <item>Bulgaria</item>
+        <item>Brazil</item>
+        <item>Vietnam</item>
+        <item>Germany</item>
+        <item>Egypt</item>
+        <item>Ireland</item>
+        <item>Kazakhstan</item>
+        <item>Colombia</item>
+        <item>Kuwait</item>
+        <item>Lithuania</item>
+    </string-array>
+    <string-array name="id_flag">
+        <item>pic_flag/australia.gif</item>
+        <item>pic_flag/united_kingdom_flag.gif</item>
+        <item>pic_flag/ghana_flag.gif</item>
+        <item>pic_flag/denmark_flag.gif</item>
+        <item>pic_flag/canada_flag.gif</item>
+        <item>pic_flag/iceland_flag.gif</item>
+        <item>pic_flag/austria_flag.gif</item>
+        <item>pic_flag/bulgaria_flag.gif</item>
+        <item>pic_flag/brazil_flag.gif</item>
+        <item>pic_flag/vietnam_flag.gif</item>
+        <item>pic_flag/germany_flag.gif</item>
+        <item>pic_flag/egypt_flag.gif</item>
+        <item>pic_flag/ireland_flag.gif</item>
+        <item>pic_flag/kazakhstan_flag.gif</item>
+        <item>pic_flag/colombia_flag.gif</item>
+        <item>pic_flag/kuwait_flag.gif</item>
+        <item>pic_flag/lithuania_flag.gif</item>
+    </string-array>
+
+</resources>

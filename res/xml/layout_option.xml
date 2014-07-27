@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ListPreference
+        android:entries="@array/options_entries"
+        android:entryValues="@array/options_values"
+        android:key="number_question"
+        android:summary="@string/setting_list_summary"
+        android:title="@string/setting_list_title"
+        android:defaultValue="10" >
+    </ListPreference>
+
+</PreferenceScreen>
