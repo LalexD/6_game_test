@@ -17,9 +17,10 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.InputType;
-
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,7 +59,7 @@ public class GameActivity extends Activity {
 				"number_question", "10")));
 		name_flags = getResources().getStringArray(R.array.name_country);
 		img_id = getResources().getStringArray(R.array.id_flag);
-		dbRecords=new DataBaseRecords(this);
+		dbRecords = new DataBaseRecords(this);
 		loadGame();
 
 	}
@@ -70,6 +71,19 @@ public class GameActivity extends Activity {
 		buttonAnswer_4.setText(name_flags[answers[3]]);
 		pictureFlag.setImageBitmap(getBitmapFromAsset(this,
 				img_id[answers[correctAnswer - 1]]));
+	}
+
+	private void toast(String text) {
+		final Toast toast = Toast.makeText(this, text, Toast.LENGTH_SHORT);
+		toast.setGravity(Gravity.BOTTOM, 0, 0);
+		toast.show();
+		Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				toast.cancel();
+			}
+		}, 500);
 	}
 
 	private void takeRandomAnswers() {
@@ -99,16 +113,18 @@ public class GameActivity extends Activity {
 	public void onClick(View v) {
 
 		progressAnswers.incrementProgressBy(1);
+
 		if (v.getId() == getResources().getIdentifier(
 				"buttonAnswer" + correctAnswer, "id", getPackageName())) {
 			numCorrectAnswers++;
-			Toast.makeText(this, "Ok", Toast.LENGTH_SHORT).show();
+			toast("Ok");
 		} else
-			Toast.makeText(this, "No", Toast.LENGTH_SHORT).show();
+			toast("No");
 
 		if (progressAnswers.getProgress() >= progressAnswers.getMax()) {
 
-			if (dbRecords.getMinScore() < numCorrectAnswers || !dbRecords.checkNumRecords(10)) {
+			if (dbRecords.getMinScore() < numCorrectAnswers
+					|| !dbRecords.checkNumRecords(10)) {
 				dialogWin();
 
 			} else
@@ -151,11 +167,12 @@ public class GameActivity extends Activity {
 		builder.show();
 	}
 
-	protected void comeTopResults(){
+	protected void comeTopResults() {
 		Intent intent = new Intent(this, TopResultActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(intent);
 	}
+
 	protected void dialogLose() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Game end");

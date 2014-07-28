@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -22,7 +24,20 @@ public class MainActivity extends Activity implements OnClickListener {
 		buttonStartGame.setOnClickListener(this);
 		buttonTopResult.setOnClickListener(this);
 		buttonOptions.setOnClickListener(this);
-		
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		animButton(0, buttonStartGame);
+		animButton(200, buttonTopResult);
+		animButton(400, buttonOptions);
+	}
+
+	private void animButton(long offset, View v) {
+		Animation anim = AnimationUtils.loadAnimation(this, R.anim.button_anim);
+		anim.setStartOffset(offset);
+		v.startAnimation(anim);
 	}
 
 	@Override

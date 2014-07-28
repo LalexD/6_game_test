@@ -2,51 +2,51 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->        
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="android:windowBackground">@color/milk</item>
-        <item name="android:colorBackground">@color/milk</item>  
-        
-        
-        
-<item name="android:colorBackgroundCacheHint">@null</item>      
+        <item name="android:colorBackground">@color/milk</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Window</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:alertDialogStyle">@style/DialogCustom</item>
     </style>
-    
+
+    <style name="Animation.Window" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_left_second_elem</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_first_elem</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_first_elem</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_right_second_elem</item>
+    </style>
+
     <style name="ButtonStyle" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/button</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">17sp</item>
-        <item name="android:shadowColor" >@color/white</item>
-    <item name="android:shadowDx" >1</item>
-    <item name="android:shadowDy" >1</item>
-    <item name="android:shadowRadius" >2</item>    
+        <item name="android:shadowColor">@color/white</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
     </style>
-    
+
     <style name="DialogCustom" parent="@android:style/Theme.Dialog">
-        
         <item name="android:windowBackground">@color/milk</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:drawableBottom">@color/milk</item>
     </style>
-   
-    
-    
-    
-       
 
 </resources>
