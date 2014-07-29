@@ -25,12 +25,7 @@ public class SplashScreen extends Activity {
 						wait(1000);
 					}
 				} catch (InterruptedException ex) {
-				}
-
-				Intent intent = new Intent(sPlashScreen, MainActivity.class);
-				startActivity(intent);
-				overridePendingTransition(R.anim.splash_appear,
-						R.anim.splash_disappear);
+				}				
 				finish();
 				try {
 					join();
@@ -55,7 +50,9 @@ public class SplashScreen extends Activity {
 	}
 	
 	@Override 
-	public void  finish(){		
+	public void  finish(){
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
 		super.finish();
 		
 		
