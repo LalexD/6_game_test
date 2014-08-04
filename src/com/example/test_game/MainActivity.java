@@ -13,17 +13,19 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button buttonStartGame;
 	private Button buttonTopResult;
 	private Button buttonOptions;
+	Thread th;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_main);
+		setContentView(R.layout.a_main);
 		buttonStartGame = (Button) findViewById(R.id.buttonStart);
 		buttonTopResult = (Button) findViewById(R.id.buttonTopResult);
 		buttonOptions = (Button) findViewById(R.id.buttonOptions);
 		buttonStartGame.setOnClickListener(this);
 		buttonTopResult.setOnClickListener(this);
 		buttonOptions.setOnClickListener(this);
+
 	}
 
 	@Override

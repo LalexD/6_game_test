@@ -1,28 +1,50 @@
 package com.example.test_game;
 
-import java.util.List;
-
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.example.test_game.data_base_records.DataBaseRecords;
-import com.example.test_game.data_base_records.Record;
+import java.util.List;
+
+import com.example.test_game.R;
+import com.example.test_game.data.db.GameDB;
+import com.example.test_game.records.Record;
+import com.example.test_game.records.RecordAdapter;
 
 public class TopResultActivity extends Activity {
 	private RecordAdapter recordAdapter;
-	private List<Record> listRecords;
+	private ListView listViewScore;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_top_result);
-		DataBaseRecords dbRecords = new DataBaseRecords(this);
-		listRecords = dbRecords.getTopRecords();
-		recordAdapter = new RecordAdapter(this,
-				R.layout.layout_item_list_records, listRecords);
-		ListView listViewScore = (ListView) findViewById(R.id.listViewScore);
-		listViewScore.setAdapter(recordAdapter);
+		setContentView(R.layout.a_top_result);
+		listViewScore = (ListView) findViewById(R.id.listViewScore);
+		new LoadRecordsDBTask().execute();
 
 	}
+
+	public class LoadRecordsDBTask extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+
+			GameDB dbRecords = new GameDB(TopResultActivity.this);
+			List<Record> listRecords = dbRecords.getTopRecords();
+			recordAdapter = new RecordAdapter(TopResultActivity.this,
+			        R.layout.i_list_record, listRecords);
+			dbRecords.close();
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			super.onPostExecute(result);
+			listViewScore.setAdapter(recordAdapter);
+
+	}
+	}
+
+
 }
